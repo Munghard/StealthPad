@@ -1,0 +1,67 @@
+﻿<Window x:Name="wWindow" x:Class="Stealthpad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stealthpad"
+        AllowsTransparency="true"
+        mc:Ignorable="d"
+        Title="Stealthpad" Background="{x:Null}" WindowStartupLocation="CenterScreen" WindowStyle="None" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ResizeMode="CanResizeWithGrip" Height="337" Width="654">
+
+    <Grid Background="#19A2A2A2">
+        <Rectangle x:Name="rBackground" Stroke="Black" Fill="Black"/>
+        <DockPanel>
+
+            <Label x:Name="lblInfo" Content="" VerticalAlignment="Bottom" Foreground="#FF8C8C8C" DockPanel.Dock="Bottom" HorizontalAlignment="Left"/>
+
+            <DockPanel x:Name="spTaskbar" Background="#FF191919" MouseDown="StackPanel_MouseDown" DockPanel.Dock="Top" VerticalAlignment="Top">
+                <Label Content="STEALTHPAD" Foreground="#FF8C8C8C" FontFamily="Bahnschrift Light"/>
+                <Label x:Name="lblPath" Content="" Foreground="#FF8C8C8C" FontFamily="Bahnschrift Light"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="btnSettings" Height="20" FontWeight="Bold" Padding="1,0,1,1" Click="btnSettings_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Bahnschrift Light">
+                        <Image Height="16" Width="16" Source="/hamburger-menu.png"/>
+                    </Button>
+                    <Button x:Name="btnMinimize" Content="-" Height="20" Width="20" FontWeight="Bold" Padding="1,0,1,1" Click="btnMinimize_Click" RenderTransformOrigin="0.5,0.5" Margin="2,0,0,0" FontFamily="Bahnschrift Light"/>
+                    <Button x:Name="btnMaximize" Content="[  ]" Height="20" Width="20" FontWeight="Bold" Padding="1,0,1,1" RenderTransformOrigin="0.5,0.5" Click="btnMaximize_Click" Margin="2,0,0,0" FontFamily="Bahnschrift Light"/>
+                    <Button x:Name="btnExit" Content="X" Height="20" Width="20" FontWeight="Bold" Padding="1,0,1,1" Click="btnExit_Click" RenderTransformOrigin="0.5,0.5" Margin="2,0,2,0" FontFamily="Bahnschrift Light"/>
+                </StackPanel>
+            </DockPanel>
+            <WrapPanel x:Name="spSettings" Background="#CC191919" Orientation="Horizontal" DockPanel.Dock="Top">
+                <WrapPanel>
+                    <Button x:Name="btnClose" Content="Close" FontWeight="Bold" Padding="1,0,1,1" Click="btnClose_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Bahnschrift Light" Margin="4,4,4,4"/>
+                    <Button x:Name="btnSave" Content="Save" FontWeight="Bold" Padding="1,0,1,1" RenderTransformOrigin="0.5,0.5" FontFamily="Bahnschrift Light" Click="btnSave_Click" IsEnabled="False" Margin="4,4,4,4"/>
+                    <Button x:Name="btnSaveAs" Content="Save as" FontWeight="Bold" Padding="1,0,1,1" RenderTransformOrigin="0.5,0.5" FontFamily="Bahnschrift Light" Click="btnSaveAs_Click" Margin="4,4,4,4"/>
+                    <Button x:Name="btnOpen" Content="Open" FontWeight="Bold" Padding="1,0,1,1" Click="btnOpen_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Bahnschrift Light" Margin="4,4,4,4"/>
+                    <Button x:Name="btnNew" Content="Split" FontWeight="Bold" Padding="1,0,1,1" Click="btnNew_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Bahnschrift Light" Margin="4,4,4,4"/>
+                </WrapPanel>
+                <StackPanel Orientation="Vertical" Width="120">
+                    <Label Content="Stay on top" Foreground="#FF00FF32" FontFamily="Bahnschrift Light"/>
+                    <CheckBox x:Name="cbPin" Content="" Foreground="#FF00FF32" Click="cbPin_Click" VerticalContentAlignment="Center" FontFamily="Bahnschrift Light" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5,0,5,0" >
+                    <Label Content="BG Opacity" Foreground="#FF00FF32" FontFamily="Bahnschrift Light"/>
+                    <Slider x:Name="sldOpacity" Width="120" ValueChanged="sldOpacity_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.01" Margin="0,0,0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5,0,5,0">
+                    <Label Content="Font size" Foreground="#FF00FF32" FontFamily="Bahnschrift Light"/>
+                    <Slider x:Name="sldSize" Width="120" Maximum="100" ValueChanged="sldSize_ValueChanged" Panel.ZIndex="-5" Minimum="5" Margin="0,0,0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5,0,5,0">
+                    <Label Content="Row spacing" Foreground="#FF00FF32" FontFamily="Bahnschrift Light"/>
+                    <Slider x:Name="sldSpacing" Width="120" ValueChanged="sldSpacing_ValueChanged" Panel.ZIndex="-5" Minimum="0.1" Maximum="100" Margin="0,0,0,5"/>
+                </StackPanel>
+            </WrapPanel>
+            <ScrollViewer Foreground="{x:Null}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+                <RichTextBox x:Name="rText" Background="{x:Null}" Foreground="#FF0AFF5D" FontFamily="Bahnschrift Light" SelectionBrush="#E500D6FF" BorderBrush="#7F0AFF5D" CaretBrush="#FF00FF56" KeyDown="rText_KeyDown" TextChanged="rText_TextChanged">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text=""/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </ScrollViewer>
+
+        </DockPanel>
+
+    </Grid>
+</Window>

@@ -21,3 +21,4 @@ E:\OmatProjektit\Stealthpad\Stealthpad\obj\Debug\net8.0-windows\ref\Stealthpad.d
 E:\OmatProjektit\Stealthpad\Stealthpad\obj\Debug\net8.0-windows\Stealthpad_Content.g.cs
 E:\OmatProjektit\Stealthpad\Stealthpad\obj\Debug\net8.0-windows\App.baml
 E:\OmatProjektit\Stealthpad\Stealthpad\bin\Debug\net8.0-windows\Stealthpad.dll.config
+E:\OmatProjektit\Stealthpad\Stealthpad\obj\Debug\net8.0-windows\Stealthpad.sourcelink.json

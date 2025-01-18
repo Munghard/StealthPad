@@ -25,6 +25,7 @@ namespace Stealthpad
         double startRowSpacing = Properties.Settings.Default.RowSpacing;
         string? filePath = null;
         Action OnFilePathChanged;
+        SoundPlayer soundPlayer = new SoundPlayer();
         public MainWindow()
         {
             InitializeComponent();
@@ -146,10 +147,10 @@ namespace Stealthpad
             Properties.Settings.Default.RowSpacing = (float)e;
             Properties.Settings.Default.Save();
             if (rText != null)
-                foreach (var block in rText.Document.Blocks)
-                {
-                    block.LineHeight = (double)e;
-                }
+            foreach (var block in rText.Document.Blocks)
+            {
+                block.LineHeight = (double)e;
+            }
         }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
@@ -168,7 +169,10 @@ namespace Stealthpad
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Save();
+            var mes = MessageBox.Show("File saved successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            PlayClick(1);
         }
+
         private void PlayClick(int e)
         {
             var path = "";
@@ -182,7 +186,7 @@ namespace Stealthpad
             }
             if (path != "")
             {
-                SoundPlayer soundPlayer = new SoundPlayer(path);
+                soundPlayer.SoundLocation = path;
                 soundPlayer.Play();
             }
         }
